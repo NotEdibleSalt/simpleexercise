@@ -80,11 +80,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 }
 ~~~
 
-## 测试方式
+## 测试
  1. 先请求/login接口，将用户信息放入到springSecurity管理中，否则请求会出现未授权异常
 
 ## 报错
-1. 启动流程时出现：org.activiti.api.runtime.shared.UnprocessableEntityException: Process definition with the given id:'zx:1:70693c00-39e9-11eb-83a7-00ff1ec9ac8e' belongs to a different application version.
+启动流程时出现：org.activiti.api.runtime.shared.UnprocessableEntityException: Process definition with the given id:'zx:1:70693c00-39e9-11eb-83a7-00ff1ec9ac8e' belongs to a different application version.
+
 解决方式：
 1. 在resources目录下创建default-project.json文件
 ~~~json
@@ -106,7 +107,6 @@ project:
     file:
       path: classpath:/default-project.json
 ~~~
-
 
 
 

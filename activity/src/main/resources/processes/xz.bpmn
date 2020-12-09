@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_0uqcs2i" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.4.0">
+  <bpmn:process id="zx" name="涨薪申请" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1" name="流程开始">
+      <bpmn:outgoing>Flow_1rbuqlc</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_1rbuqlc" sourceRef="StartEvent_1" targetRef="Activity_1jvr5k6" />
+    <bpmn:userTask id="Activity_1jvr5k6" name="提交申请" camunda:assignee="${applyName}">
+      <bpmn:incoming>Flow_1rbuqlc</bpmn:incoming>
+      <bpmn:outgoing>Flow_16tox3q</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="Gateway_0oeurvg">
+      <bpmn:incoming>Flow_16tox3q</bpmn:incoming>
+      <bpmn:outgoing>Flow_168hqha</bpmn:outgoing>
+      <bpmn:outgoing>Flow_15ito6e</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_16tox3q" sourceRef="Activity_1jvr5k6" targetRef="Gateway_0oeurvg" />
+    <bpmn:task id="Activity_1cmfbcz" name="领导审核">
+      <bpmn:incoming>Flow_168hqha</bpmn:incoming>
+      <bpmn:outgoing>Flow_1g2b74o</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_168hqha" name="大于等于1000" sourceRef="Gateway_0oeurvg" targetRef="Activity_1cmfbcz">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${num &gt;= 1000}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:endEvent id="Event_080i5cz" name="流程结束">
+      <bpmn:incoming>Flow_1g2b74o</bpmn:incoming>
+      <bpmn:incoming>Flow_15ito6e</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1g2b74o" sourceRef="Activity_1cmfbcz" targetRef="Event_080i5cz" />
+    <bpmn:sequenceFlow id="Flow_15ito6e" name="小于1000" sourceRef="Gateway_0oeurvg" targetRef="Event_080i5cz">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${num &lt; 1000}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="zx">
+      <bpmndi:BPMNEdge id="Flow_1rbuqlc_di" bpmnElement="Flow_1rbuqlc">
+        <di:waypoint x="198" y="140" />
+        <di:waypoint x="250" y="140" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_16tox3q_di" bpmnElement="Flow_16tox3q">
+        <di:waypoint x="350" y="140" />
+        <di:waypoint x="405" y="140" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_168hqha_di" bpmnElement="Flow_168hqha">
+        <di:waypoint x="455" y="140" />
+        <di:waypoint x="610" y="140" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="499" y="122" width="68" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1g2b74o_di" bpmnElement="Flow_1g2b74o">
+        <di:waypoint x="660" y="180" />
+        <di:waypoint x="660" y="282" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_15ito6e_di" bpmnElement="Flow_15ito6e">
+        <di:waypoint x="430" y="165" />
+        <di:waypoint x="430" y="300" />
+        <di:waypoint x="642" y="300" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="423" y="230" width="46" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="162" y="122" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="158" y="165" width="44" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_00rie8e_di" bpmnElement="Activity_1jvr5k6">
+        <dc:Bounds x="250" y="100" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0oeurvg_di" bpmnElement="Gateway_0oeurvg" isMarkerVisible="true">
+        <dc:Bounds x="405" y="115" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1cmfbcz_di" bpmnElement="Activity_1cmfbcz">
+        <dc:Bounds x="610" y="100" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_080i5cz_di" bpmnElement="Event_080i5cz">
+        <dc:Bounds x="642" y="282" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="638" y="325" width="44" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

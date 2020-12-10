@@ -7,6 +7,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import sun.rmi.runtime.Log;
 
+import java.util.Set;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @RunWith(SpringRunner.class)
@@ -80,6 +82,13 @@ class StringRedisServiceTest {
         stringRedisService.set("当当当", "敲门了");
         stringRedisService.exec();
 
+    }
+
+    @Test
+    void scan(){
+
+        Set<String> stringSet = stringRedisService.scan("*");
+        stringSet.forEach(System.out::println);
     }
 
 }

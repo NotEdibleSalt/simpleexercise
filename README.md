@@ -1,8 +1,10 @@
 # simpleexercise
 简单练习
 
-## spring boot整合activiti7
+## SpringBoot整合activiti7
 
-## spring boot整合elasticjob
+## SpringBoot整合elasticjob
+
+## SpringBoot整合Spring Data Redis
 
 ## webFlux练习

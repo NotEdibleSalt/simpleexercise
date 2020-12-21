@@ -1,0 +1,10 @@
+spring:
+  data:
+    elasticsearch:
+      repositories:
+        enabled: true
+  elasticsearch:
+    rest:
+      uris: 1**.***.***.***:9200
+      username: username
+      password: password

@@ -1,0 +1,36 @@
+###
+POST http://localhost:8080/save
+Content-Type: application/json
+
+{
+  "id": "4",
+  "sex": "男",
+  "name": "王大壮"
+}
+
+###
+GET http://localhost:8080/3
+
+
+###
+DELETE http://localhost:8080/2
+
+###
+GET http://localhost:8080/template/stringQuery?param=小
+
+
+###
+GET http://localhost:8080/template/nativeSearch
+
+
+###
+GET http://localhost:8080/template/criteriaQuery
+
+###
+POST http://localhost:8080/template/save?name=小李飞刀
+
+###
+DELETE http://localhost:8080/template/3
+
+###
+GET http://localhost:8080/template/exists/3

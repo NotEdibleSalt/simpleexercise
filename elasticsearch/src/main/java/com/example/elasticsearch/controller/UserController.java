@@ -30,6 +30,13 @@ public class UserController {
     @Resource
     private UserRepository userRepository;
 
+    /**
+     * 通过UserRepository#findById方法查询数据
+     *
+     * @param id:
+     * @return UserEntity
+     * @Date 2020-12-21
+     **/
     @GetMapping("/{id}")
     public UserEntity getUser(@PathVariable("id") String id){
 
@@ -37,6 +44,13 @@ public class UserController {
         return userEntityOptional.orElseGet(null);
     }
 
+    /**
+     * 通过UserRepository#save方法保存数据
+     *
+     * @param userEntity:
+     * @return UserEntity
+     * @Date 2020-12-21
+     **/
     @PostMapping("/save")
     public UserEntity saveUser(@RequestBody UserEntity userEntity){
 
@@ -46,6 +60,13 @@ public class UserController {
         return userRepository.save(userEntity);
     }
 
+    /**
+     *  通过UserRepository#deleteById方法删除数据
+     *
+     * @param id:
+     * @return boolean
+     * @Date 2020-12-21
+     **/
     @DeleteMapping("/{id}")
     public boolean delUser(@PathVariable("id") String id){
 
@@ -54,12 +75,28 @@ public class UserController {
         return userEntityOptional.isPresent();
     }
 
+    /**
+     * 通过ElasticsearchRestTemplate#get方法查询数据
+     *
+     * @param id:
+     * @return UserEntity
+     * @Date 2020-12-21
+     **/
     @GetMapping("template/{id}")
     public UserEntity get(@PathVariable("id") String id){
 
         return elasticsearchRestTemplate.get(id, UserEntity.class);
     }
 
+
+    /**
+     * 通过ElasticsearchRestTemplate#search方法查询数据
+     * 查询参数为string类型
+     *
+     * @param param:
+     * @return SearchHits<UserEntity>
+     * @Date 2020-12-21
+     **/
     @GetMapping("template/stringQuery")
     public SearchHits<UserEntity> stringQuery(@RequestParam("param") String param){
 
@@ -76,6 +113,13 @@ public class UserController {
         return searchHits;
     }
 
+    /**
+     * 通过ElasticsearchRestTemplate#search方法查询数据
+     * 查询参数为Native类型
+     *
+     * @return SearchHits<UserEntity>
+     * @Date 2020-12-21
+     **/
     @GetMapping("template/nativeSearch")
     public SearchHits<UserEntity> nativeSearch(){
 
@@ -87,6 +131,13 @@ public class UserController {
         return searchHits;
     }
 
+    /**
+     * 通过ElasticsearchRestTemplate#search方法查询数据
+     * 查询参数为Criteria类型
+     *
+     * @return SearchHits<UserEntity>
+     * @Date 2020-12-21
+     **/
     @GetMapping("template/criteriaQuery")
     public SearchHits<UserEntity> criteriaQuery(){
 
@@ -97,6 +148,13 @@ public class UserController {
         return searchHits;
     }
 
+    /**
+     * 通过ElasticsearchRestTemplate#save方法保存数据
+     * index(索引) 为实体类上注解标识的索引
+     *
+     * @return SearchHits<UserEntity>
+     * @Date 2020-12-21
+     **/
     @PostMapping("template/save")
     public UserEntity saveUserEntity(@RequestParam("name") String name){
 
@@ -110,6 +168,13 @@ public class UserController {
         return elasticsearchRestTemplate.save(userEntity);
     }
 
+    /**
+     * 通过ElasticsearchRestTemplate#delete方法删除数据
+     *
+     *
+     * @return SearchHits<UserEntity>
+     * @Date 2020-12-21
+     **/
     @DeleteMapping("template/{id}")
     public String delUserEntity(@PathVariable("id") String id){
 
@@ -117,6 +182,13 @@ public class UserController {
         return delete;
     }
 
+    /**
+     * 通过ElasticsearchRestTemplate#exists方法查询数据是否存在
+     *
+     *
+     * @return SearchHits<UserEntity>
+     * @Date 2020-12-21
+     **/
     @GetMapping("template/exists/{id}")
     public boolean exists(@PathVariable("id") String id){
 

@@ -1,0 +1,27 @@
+spring:
+  cloud:
+    stream:
+      kafka:
+        binder:
+          auto-create-topics: true   # 自动创建topics
+          brokers: ***.***.***.***:9092
+      bindings:
+        logP-out-0:    # 对用在ProducersConfig中的生产函数logP
+          destination: log  # logP将数据发送的topic
+          contentType: application/json
+        logC-in-0:    # 对用在ConsumersConfig中的生产函数logC
+          destination: log
+          group: log_group
+        addAgeC-in-0:
+          destination: addAge
+          group: addAge_group
+      function:
+        definition: logP;logC;addAgeC  # 指定对应的函数为Spring Cloud Stream中的生产消费通道
+
+
+
+
+
+
+
+

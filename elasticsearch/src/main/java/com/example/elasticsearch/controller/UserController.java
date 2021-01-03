@@ -195,5 +195,4 @@ public class UserController {
         return elasticsearchRestTemplate.exists(id, UserEntity.class);
     }
 
-
 }

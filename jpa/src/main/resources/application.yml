@@ -1,0 +1,20 @@
+spring:
+  data:
+    jpa:
+      repositories:
+        enabled: true
+  jpa:
+    show-sql: true
+    database: mysql
+    hibernate:
+      ddl-auto: update
+    generate-ddl: true
+    properties:
+      hibernate:
+        dialect: com.example.jpa.config.MysqlDialectUtf8mb4Config
+
+  datasource:
+    url: jdbc:mysql://***.***.***.***:3306/jpa?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT
+    username: username
+    password: password
+    driver-class-name: com.mysql.cj.jdbc.Driver

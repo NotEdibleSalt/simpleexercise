@@ -4,7 +4,7 @@ spring:
       kafka:
         binder:
           auto-create-topics: true   # 自动创建topics
-          brokers: ***.***.***.***:9092
+          brokers: 39.105.93.184:9092
       bindings:
         logP-out-0:    # 对用在ProducersConfig中的生产函数logP
           destination: log  # logP将数据发送的topic

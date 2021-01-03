@@ -21,6 +21,8 @@
         <module>elasticjob</module>
         <module>elasticsearch</module>
         <module>kafka</module>
+        <module>multi thread</module>
+        <module>jpa</module>
     </modules>
 
     <dependencies>

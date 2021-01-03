@@ -5,6 +5,6 @@ spring:
         enabled: true
   elasticsearch:
     rest:
-      uris: 1**.***.***.***:9200
-      username: username
-      password: password
+      uris: 106.12.221.38:9200
+      username: elastic
+      password: 123456

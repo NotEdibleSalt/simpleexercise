@@ -1,0 +1,9 @@
+###
+POST http://localhost:8080/addUser
+Content-Type: application/json
+
+{
+  "id": "1",
+  "name": "user",
+  "age": 24
+}

@@ -1,0 +1,22 @@
+type Query {
+    greeting: String
+    author(id: ID!): Author
+}
+
+type Author {
+    id: ID!
+    name: String!
+    sex: SexEnum
+    books: [Book]
+}
+
+type Book {
+    bookName: String!
+    publish: Boolean!
+    price: Float
+}
+
+enum SexEnum {
+    man,
+    woman
+}

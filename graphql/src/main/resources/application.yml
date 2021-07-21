@@ -1,0 +1,9 @@
+server:
+  port: 8888
+spring:
+  graphql:
+    schema:
+      printer:
+        enabled: true
+    locations: /graphql  # 指定schema文件的位置， 默认在resources下的graphql文件夹下
+

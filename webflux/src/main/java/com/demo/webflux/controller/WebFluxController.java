@@ -9,6 +9,10 @@ import org.w3c.dom.ranges.DocumentRange;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.FluxSink;
 import reactor.core.publisher.Mono;
+
+import javax.xml.ws.spi.http.HttpExchange;
+import javax.xml.ws.spi.http.HttpHandler;
+import java.io.IOException;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -46,7 +50,7 @@ public class WebFluxController {
         User user = User.builder()
                 .id(id)
                 .name(name)
-                .age(new Random(100).nextInt(2))
+                .age(12)
                 .build();
         return Mono.just(user);
     }

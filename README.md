@@ -16,3 +16,5 @@
 ## Spring Security oauth2
 
 ## webFlux练习
+
+## Graphql

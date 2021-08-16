@@ -1,8 +1,10 @@
+# 定义查询
 type Query {
     greeting: String
     author(id: ID!): Author
 }
 
+# 定义Author，和java中Author对象对应
 type Author {
     id: ID!
     name: String!
@@ -10,12 +12,14 @@ type Author {
     books: [Book]
 }
 
+# 定义Book，和java中Book对象对应
 type Book {
     bookName: String!
     publish: Boolean!
     price: Float
 }
 
+# 定义枚举，和java中SexEnum对应
 enum SexEnum {
     man,
     woman

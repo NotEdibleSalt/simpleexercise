@@ -1,0 +1,35 @@
+server:
+  port: 7909
+
+spring:
+  data:
+    jpa:
+      repositories:
+        enabled: true
+    redis:
+      repositories:
+        enabled: true
+  jpa:
+    show-sql: true
+    database: mysql
+    hibernate:
+      ddl-auto: none
+    generate-ddl: false
+
+  datasource:
+    url: jdbc:mysql://******:****/user?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT
+    username: ****
+    password: ****
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  redis:
+    host: ***********
+    port: ****
+    password: ****
+  cache:
+    type: redis          # 使用redis存储缓存数据
+    redis:
+      time-to-live: -1           # 过期时间，-1：永不过期
+      use-key-prefix: true           # 开启缓存key的前缀
+      key-prefix: spring_cache_     # 缓存key的前缀
+      cache-null-values: false     # 缓存null

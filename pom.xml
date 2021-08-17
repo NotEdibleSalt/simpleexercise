@@ -24,7 +24,7 @@
         <module>multi thread</module>
         <module>jpa</module>
         <module>secuity</module>
-        
+
     </modules>
 
     <dependencies>
